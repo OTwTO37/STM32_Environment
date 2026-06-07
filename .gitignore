@@ -1,0 +1,9 @@
+*.uvguix.*
+*.uvoptx
+*.scvd
+Objects/
+Listings/
+*.o
+*.d
+*.hex
+*.bin
