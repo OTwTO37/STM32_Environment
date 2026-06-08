@@ -4,11 +4,11 @@
 
 ## 功能概述
 
--温湿度采集：DHT11 传感器实时采集环境温湿度
--本地显示：OLED 屏幕显示当前数据及多级菜单交互
--云端上传：通过 ESP8266 连接 OneNET 平台，MQTT 协议上报数据
--远程控制：微信小程序端控制 LED、蜂鸣器报警
--断线重连：MQTT 断线自动重连，24h 丢包率 < 5%
+1. 温湿度采集：DHT11 传感器实时采集环境温湿度
+2. 本地显示：OLED 屏幕显示当前数据及多级菜单交互
+3. 云端上传：通过 ESP8266 连接 OneNET 平台，MQTT 协议上报数据
+4. 远程控制：微信小程序端控制 LED、蜂鸣器报警
+5. 断线重连：MQTT 断线自动重连，24h 丢包率 < 5%
 
 ## 硬件平台
 
@@ -37,9 +37,9 @@
 
 ### 2. 环境配置
 
-1.IDE：Keil uVision 5
-2.库：STM32 标准外设库
-3.烧录：ST-Link / 串口
+1. IDE：Keil uVision 5
+2. 库：STM32 标准外设库
+3. 烧录：ST-Link / 串口
 
 ### 3. OneNET 配置
 
@@ -48,8 +48,8 @@
 3. 在代码中替换对应宏定义
 
 ### 4. 编译与烧录
- 1.Keil 中编译
-2.使用 ST-Link烧录 .hex 文件
+1. Keil 中编译
+2. 使用 ST-Link烧录 .hex 文件
 
 ## 测试结果
 
@@ -62,15 +62,28 @@
 
 ## 项目结构
 
-├── Core/
+├── Main/
 │   ├── main.c
 │   ├── stm32f10x_it.c
 
-├── Drivers/
-│   ├── dht11.c/h
-│   ├── oled.c/h
+├── APP/
+│   ├── bsp_dht11.c/h
+│   ├── bsp_oled.c/h
+
+|——BSP/
+│   ├── bsp_Alarm.c/h
+│   ├── bsp_delay.c/h
+│   ├── bsp_key.c/h
+│   ├── bsp_led.c/h
+│   ├── bsp_timer.c/h
+│   ├── bsp_usart.c/h
+
+├── Onenet/
+│   ├── Mqttkit.c/h
 │   ├── esp8266.c/h
-│   └── mqtt.c/h
+│   ├── onenet.c/h
+│   ├── CJSON.c/h
+
 
 ├── Project/
 │   └── *.uvprojx
@@ -78,9 +91,9 @@
 
 ## 待优化项
 
-1.增加 WiFi 配网功能（目前 SSID/密码写死）
-2.支持更多传感器（烟雾、光照）
-3.增加本地数据存储（EEPROM 保存阈值）
+1. 增加 WiFi 配网功能（目前 SSID/密码写死）
+2. 支持更多传感器（烟雾、光照）
+3. 增加本地数据存储（EEPROM 保存阈值）
 
 ## 作者
 
